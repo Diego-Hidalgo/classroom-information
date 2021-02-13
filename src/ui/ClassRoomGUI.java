@@ -127,7 +127,8 @@ public class ClassRoomGUI {
     @FXML
     public void registerUser() {
         if(!newNametxt.getText().equals("") && !newPasswordtxt.getText().equals("") &&
-        !photoRoute.getText().equals("") && !birthdaytxt.getValue().toString().equals("") && !browserOptions.getValue().equals("")) {
+        !photoRoute.getText().equals("") && !birthdaytxt.getValue().toString().equals("") && !browserOptions.getValue().equals("") &&
+                (softwareCheck.isSelected() || telematicCheck.isSelected() || industrialCheck.isSelected())) {
             if(!classRoom.findUserName(newNametxt.getText())) {
                 String name = newNametxt.getText();
                 String password = newPasswordtxt.getText();
