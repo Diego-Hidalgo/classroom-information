@@ -50,7 +50,7 @@ public class ClassRoom {
         return validate;
     }
 
-    public String getUserPhotoRoute(String userName) {
+    public String getUserPhotoPath(String userName) {
         String imgRoute = "";
         for(int i = 0; i < users.size(); i++) {
             UserAccount user = users.get(i);

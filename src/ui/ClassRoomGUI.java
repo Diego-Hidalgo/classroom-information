@@ -1,5 +1,6 @@
 package ui;
 
+import javafx.event.ActionEvent;
 import model.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,7 +33,7 @@ public class ClassRoomGUI {
     //Register controls
     @FXML private TextField newNametxt;
     @FXML private PasswordField newPasswordtxt;
-    @FXML private TextField photoRoute;
+    @FXML private TextField photoPath;
     @FXML private ToggleGroup genderGroup;
     @FXML private CheckBox softwareCheck;
     @FXML private CheckBox telematicCheck;
@@ -73,7 +74,7 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    public void loginUser() throws IOException {
+    public void loginUser(ActionEvent e) throws IOException {
         String userName = userNametxt.getText();
         String password = passwordtxt.getText();
         if(classRoom.validateCredentials(userName, password)) {
@@ -85,7 +86,7 @@ public class ClassRoomGUI {
 
     @FXML
     private void loginSuccessful(String userName) throws IOException {
-        String imgRoute = classRoom.getUserPhotoRoute(userName);
+        String imgRoute = classRoom.getUserPhotoPath(userName);
         File file = new File(imgRoute);
         Image photo = new Image(file.toURI().toString());
         loadAccountList();
@@ -104,7 +105,7 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    public void loadRegister() throws IOException {
+    public void loadRegister(ActionEvent e) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register.fxml"));
         fxmlLoader.setController(this);
         Parent pane = fxmlLoader.load();
@@ -127,14 +128,14 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    public void registerUser() {
+    public void registerUser(ActionEvent e) {
         if(!newNametxt.getText().equals("") && !newPasswordtxt.getText().equals("") &&
-        !photoRoute.getText().equals("") && !birthdaytxt.getValue().toString().equals("") && !browserOptions.getValue().equals("") &&
+        !photoPath.getText().equals("") && birthdaytxt.getValue() != null && !browserOptions.getValue().equals("") &&
                 (softwareCheck.isSelected() || telematicCheck.isSelected() || industrialCheck.isSelected())) {
             if(!classRoom.findUserName(newNametxt.getText())) {
                 String name = newNametxt.getText();
                 String password = newPasswordtxt.getText();
-                String photo = photoRoute.getText();
+                String photo = photoPath.getText();
                 String gender = getSelectedGender();
                 String[] careers = getSelectedCareers();
                 String birthday = birthdaytxt.getValue().toString();
@@ -182,7 +183,7 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    public void browsePhotos() {
+    public void browsePhotos(ActionEvent e) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose your profile photo");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images", "*.*"),
@@ -190,7 +191,7 @@ public class ClassRoomGUI {
                 new FileChooser.ExtensionFilter("PNG","*.png"));
         File photoSelected = fileChooser.showOpenDialog(null);
         if(photoSelected != null) {
-            photoRoute.setText(photoSelected.getAbsolutePath());
+            photoPath.setText(photoSelected.getAbsolutePath());
         }
     }
 
@@ -247,7 +248,7 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    public void logout() throws IOException {
+    public void logout(ActionEvent e) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logout");
         alert.setHeaderText("You are about to log out");

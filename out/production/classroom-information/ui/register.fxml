@@ -54,7 +54,7 @@
             <Font size="14.0" />
          </font>
       </PasswordField>
-      <TextField fx:id="photoRoute" editable="false" layoutX="177.0" layoutY="176.0">
+      <TextField fx:id="photoPath" editable="false" layoutX="177.0" layoutY="176.0">
          <font>
             <Font size="14.0" />
          </font>
