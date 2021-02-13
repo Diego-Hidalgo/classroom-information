@@ -1,8 +1,8 @@
 package ui;
 
+import model.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -98,6 +98,8 @@ public class ClassRoomGUI {
         alert.setTitle("LOGIN ERROR");
         alert.setHeaderText(null);
         alert.setContentText("Please verify your username and/or password");
+        ButtonType confirmation = new ButtonType("OK");
+        alert.getButtonTypes().setAll(confirmation);
         alert.showAndWait();
     }
 
@@ -153,6 +155,8 @@ public class ClassRoomGUI {
         alert.setTitle("");
         alert.setHeaderText("THE USERNAME YOU CHOSE IS NOT AVAILABLE");
         alert.setContentText("Please select another username");
+        ButtonType confirmation = new ButtonType("OK");
+        alert.getButtonTypes().setAll(confirmation);
         alert.showAndWait();
     }
 
@@ -207,6 +211,8 @@ public class ClassRoomGUI {
         alert.setTitle("");
         alert.setHeaderText(null);
         alert.setContentText("You must fill each field in the form");
+        ButtonType confirmation = new ButtonType("OK");
+        alert.getButtonTypes().setAll(confirmation);
         alert.showAndWait();
     }
 
