@@ -69,7 +69,7 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    public void loginUser() throws IOException {
+    public void loginUser() {
         String userName = userNametxt.getText();
         String password = passwordtxt.getText();
         if(classRoom.validateCredentials(userName, password)) {
@@ -80,12 +80,12 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    public void loginSuccessful(String userName) throws IOException {
+    public void loginSuccessful(String userName) {
 
     }
 
     @FXML
-    private void loginError() throws IOException {
+    private void loginError() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("LOGIN ERROR");
         alert.setHeaderText(null);
@@ -107,7 +107,7 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    private void setBrowserElements() throws IOException {
+    private void setBrowserElements() {
         browserOptions.getItems().add("CHROME");
         browserOptions.getItems().add("OPERA");
         browserOptions.getItems().add("FIREFOX");
@@ -117,7 +117,7 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    public void registerUser() throws IOException{
+    public void registerUser() {
         if(!newNametxt.getText().equals("") && !newPasswordtxt.getText().equals("") &&
         !photoRoute.getText().equals("") && !birthdaytxt.getValue().toString().equals("") && !browserOptions.getValue().equals("")) {
             if(!classRoom.findUserName(newNametxt.getText())) {
@@ -169,7 +169,7 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    public void browsePhotos() throws IOException {
+    public void browsePhotos() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose your profile photo");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images", "*.*"),
@@ -182,7 +182,7 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    private void registerSuccessful() throws IOException {
+    private void registerSuccessful() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("");
         alert.setHeaderText(null);
@@ -193,7 +193,7 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    private void registerError() throws IOException {
+    private void registerError() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("");
         alert.setHeaderText(null);
@@ -202,7 +202,7 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    public void loadUserAccount() throws IOException {
+    public void loadAccountList() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("account-list.fxml"));
         fxmlLoader.setController(this);
         Parent pane = fxmlLoader.load();
@@ -210,12 +210,12 @@ public class ClassRoomGUI {
         mainPane.setCenter(pane);
         setTableViewContent();
         Stage st = (Stage) pane.getScene().getWindow();
-        st.setHeight(430);
+        st.setHeight(550);
         st.setWidth(650);
     }
 
     @FXML
-    private void setTableViewContent() throws IOException {
+    private void setTableViewContent() {
         ObservableList<UserAccount> content = FXCollections.observableArrayList(classRoom.getUsers());
         contentList.setItems(content);
         userNameColumn.setCellValueFactory(new PropertyValueFactory<UserAccount, String>("userName"));
