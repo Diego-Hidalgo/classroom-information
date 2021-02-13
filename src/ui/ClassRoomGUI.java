@@ -1,5 +1,7 @@
 package ui;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,31 +22,33 @@ public class ClassRoomGUI {
     private ClassRoom classRoom;
 
     //mainPane
-    @FXML BorderPane mainPane;
+    @FXML private BorderPane mainPane;
 
     //Login controls
-    @FXML Button loginBtn;
-    @FXML TextField userNametxt;
-    @FXML PasswordField passwordtxt;
+    @FXML private Button loginBtn;
+    @FXML private TextField userNametxt;
+    @FXML private PasswordField passwordtxt;
 
     //Register controls
-    @FXML TextField newNametxt;
-    @FXML PasswordField newPasswordtxt;
-    @FXML TextField photoRoute;
-    @FXML ToggleGroup genderGroup;
-    @FXML CheckBox softwareCheck;
-    @FXML CheckBox telematicCheck;
-    @FXML CheckBox industrialCheck;
-    @FXML DatePicker birthdaytxt;
-    @FXML ChoiceBox<String> browserOptions;
+    @FXML private TextField newNametxt;
+    @FXML private PasswordField newPasswordtxt;
+    @FXML private TextField photoRoute;
+    @FXML private ToggleGroup genderGroup;
+    @FXML private CheckBox softwareCheck;
+    @FXML private CheckBox telematicCheck;
+    @FXML private CheckBox industrialCheck;
+    @FXML private DatePicker birthdaytxt;
+    @FXML private ChoiceBox<String> browserOptions;
 
     //AccountList controls
-    @FXML TableView<UserAccount> contentList;
-    @FXML TableColumn<UserAccount, String> userNameColumn;
-    @FXML TableColumn<UserAccount, Gender> genderColumn;
-    @FXML TableColumn<UserAccount, String> careerColumn;
-    @FXML TableColumn<UserAccount, String> birthdayColumn;
-    @FXML TableColumn<UserAccount, Browser> browserColumn;
+    @FXML private Label accountName;
+    @FXML private ImageView accountPhoto;
+    @FXML private TableView<UserAccount> contentList;
+    @FXML private TableColumn<UserAccount, String> userNameColumn;
+    @FXML private TableColumn<UserAccount, Gender> genderColumn;
+    @FXML private TableColumn<UserAccount, String> careerColumn;
+    @FXML private TableColumn<UserAccount, String> birthdayColumn;
+    @FXML private TableColumn<UserAccount, Browser> browserColumn;
 
     public ClassRoomGUI(ClassRoom classRoom) {
         this.classRoom = classRoom;
@@ -69,7 +73,7 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    public void loginUser() {
+    public void loginUser() throws IOException {
         String userName = userNametxt.getText();
         String password = passwordtxt.getText();
         if(classRoom.validateCredentials(userName, password)) {
@@ -80,8 +84,12 @@ public class ClassRoomGUI {
     }
 
     @FXML
-    public void loginSuccessful(String userName) {
-
+    private void loginSuccessful(String userName) throws IOException {
+        String imgRoute = classRoom.getUserPhotoRoute(userName);
+        File file = new File(imgRoute);
+        Image photo = new Image(file.toURI().toString());
+        loadAccountList();
+        setUserData(userName, photo);
     }
 
     @FXML
@@ -212,6 +220,12 @@ public class ClassRoomGUI {
         Stage st = (Stage) pane.getScene().getWindow();
         st.setHeight(550);
         st.setWidth(650);
+    }
+
+    @FXML
+    private void setUserData(String userName, Image photo) {
+        accountName.setText(userName);
+        accountPhoto.setImage(photo);
     }
 
     @FXML

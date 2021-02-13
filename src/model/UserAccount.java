@@ -60,7 +60,7 @@ public class UserAccount {
         String info = "";
         for(int i = 0; i < careers.length; i++) {
             if(careers[i] != null) {
-                info += careers[i] + "  ";
+                info += careers[i] + " ENGINEERING  ";
             }
         }
         return info;
