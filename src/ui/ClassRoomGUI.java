@@ -137,7 +137,7 @@ public class ClassRoomGUI {
 
     //Action for Button register
     @FXML
-    public void registerUser(ActionEvent e) {
+    public void registerUser(ActionEvent e) throws IOException{
         if(!newNametxt.getText().equals("") && !newPasswordtxt.getText().equals("") &&
         !photoPath.getText().equals("") && birthdaytxt.getValue() != null && !browserOptions.getValue().equals("") &&
                 (softwareCheck.isSelected() || telematicCheck.isSelected() || industrialCheck.isSelected())) {
@@ -209,7 +209,7 @@ public class ClassRoomGUI {
 
     //Displays an alert
     @FXML
-    private void registerSuccessful() {
+    private void registerSuccessful() throws IOException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("");
         alert.setHeaderText(null);
@@ -217,6 +217,7 @@ public class ClassRoomGUI {
         ButtonType confirmation = new ButtonType("OK");
         alert.getButtonTypes().setAll(confirmation);
         alert.showAndWait();
+        loadLogin();
     }
 
     //Displays an alert
