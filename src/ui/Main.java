@@ -12,11 +12,13 @@ public class Main extends Application {
     private ClassRoom classRoom;
     private ClassRoomGUI classRoomGUI;
 
+    //Class constructor
     public Main(){
         classRoom = new ClassRoom();
         classRoomGUI = new ClassRoomGUI(classRoom);
     }
 
+    //inherited method
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-pane.fxml"));
@@ -29,6 +31,7 @@ public class Main extends Application {
         classRoomGUI.loadLogin();
     }
 
+    //main method
     public static void main(String[] args) {launch(args);}
 
 }

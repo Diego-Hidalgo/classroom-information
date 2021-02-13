@@ -51,13 +51,16 @@ public class ClassRoomGUI {
     @FXML private TableColumn<UserAccount, String> birthdayColumn;
     @FXML private TableColumn<UserAccount, Browser> browserColumn;
 
+    //Class constructor
     public ClassRoomGUI(ClassRoom classRoom) {
         this.classRoom = classRoom;
     }
 
+    //initialize method
     @FXML
     public void initialize() {}
 
+    //Loads de login.fxml screen
     @FXML
     public void loadLogin() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
@@ -73,6 +76,7 @@ public class ClassRoomGUI {
         st.setWidth(450);
     }
 
+    //Action for button login
     @FXML
     public void loginUser(ActionEvent e) throws IOException {
         String userName = userNametxt.getText();
@@ -84,6 +88,7 @@ public class ClassRoomGUI {
         }
     }
 
+    //Loads the account-list.fxml screen and sets the user data (name and photo)
     @FXML
     private void loginSuccessful(String userName) throws IOException {
         String imgRoute = classRoom.getUserPhotoPath(userName);
@@ -93,6 +98,7 @@ public class ClassRoomGUI {
         setUserData(userName, photo);
     }
 
+    //Displays an alert if credentials for login are not valid
     @FXML
     private void loginError() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -104,6 +110,7 @@ public class ClassRoomGUI {
         alert.showAndWait();
     }
 
+    //Loads the register.fxml screen
     @FXML
     public void loadRegister(ActionEvent e) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register.fxml"));
@@ -117,6 +124,7 @@ public class ClassRoomGUI {
         st.setWidth(505);
     }
 
+    //Sets the elements displayed in the ChoiceBox
     @FXML
     private void setBrowserElements() {
         browserOptions.getItems().add("CHROME");
@@ -127,6 +135,7 @@ public class ClassRoomGUI {
         browserOptions.getItems().add("SAFARI");
     }
 
+    //Action for Button register
     @FXML
     public void registerUser(ActionEvent e) {
         if(!newNametxt.getText().equals("") && !newPasswordtxt.getText().equals("") &&
@@ -150,6 +159,7 @@ public class ClassRoomGUI {
         }
     }
 
+    //Displays an alert
     @FXML
     private void nameNotAvailable() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -161,13 +171,14 @@ public class ClassRoomGUI {
         alert.showAndWait();
     }
 
+    //Returns the selected gender
     private String getSelectedGender() {
         RadioButton selection = (RadioButton) genderGroup.getSelectedToggle();
         String gender = selection.getText().toUpperCase();
         return gender;
     }
 
-
+    //returns the selected careers(s)
     private String[] getSelectedCareers() {
         String[] careers = new String[3];
         if(softwareCheck.isSelected()) {
@@ -182,6 +193,7 @@ public class ClassRoomGUI {
         return careers;
     }
 
+    //Displays the file chooser and lets the user choose a file
     @FXML
     public void browsePhotos(ActionEvent e) {
         FileChooser fileChooser = new FileChooser();
@@ -195,6 +207,7 @@ public class ClassRoomGUI {
         }
     }
 
+    //Displays an alert
     @FXML
     private void registerSuccessful() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -206,6 +219,7 @@ public class ClassRoomGUI {
         alert.showAndWait();
     }
 
+    //Displays an alert
     @FXML
     private void registerError() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -217,6 +231,7 @@ public class ClassRoomGUI {
         alert.showAndWait();
     }
 
+    //Loads the account-list.fxml screen
     @FXML
     public void loadAccountList() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("account-list.fxml"));
@@ -230,12 +245,14 @@ public class ClassRoomGUI {
         st.setWidth(650);
     }
 
+    //Sets the user data in the account-list screen
     @FXML
     private void setUserData(String userName, Image photo) {
         accountName.setText(userName);
         accountPhoto.setImage(photo);
     }
 
+    //sets the content to be displayed in the TableView
     @FXML
     private void setTableViewContent() {
         ObservableList<UserAccount> content = FXCollections.observableArrayList(classRoom.getUsers());
@@ -247,6 +264,7 @@ public class ClassRoomGUI {
         browserColumn.setCellValueFactory(new PropertyValueFactory<UserAccount, Browser>("favBrowser"));
     }
 
+    //Allows the user to logout the account-list screen an return to login screen
     @FXML
     public void logout(ActionEvent e) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

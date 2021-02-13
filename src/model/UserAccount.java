@@ -10,6 +10,7 @@ public class UserAccount {
     private String birthday;
     private Browser favBrowser;
 
+    //Class controller
     public UserAccount(String userName, String password, String photo, String gender, String birthday, String favBrowser) {
         this.userName = userName;
         this.password = password;
@@ -56,6 +57,7 @@ public class UserAccount {
         return careers;
     }
 
+    //Returns the info of the careers in a String
     public String getCareersInfo() {
         String info = "";
         for(int i = 0; i < careers.length; i++) {
@@ -70,6 +72,7 @@ public class UserAccount {
         this.careers = careers;
     }
 
+    //Sets the career attibute value given a String[]
     public void setCareers(String[] careers) {
         for(int i = 0; i < careers.length; i ++) {
             if(careers[i] != null) {
