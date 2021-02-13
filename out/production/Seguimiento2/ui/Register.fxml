@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="520.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="204.0" layoutY="31.0" text="Join to Classroom">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="168.0" layoutY="52.0" text="Create your account">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="77.0" layoutY="104.0" text="Username:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="79.0" layoutY="141.0" text="Password:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="57.0" layoutY="181.0" text="Profile photo:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="98.0" layoutY="221.0" text="Gender:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="101.0" layoutY="264.0" text="Career:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="94.0" layoutY="370.0" text="Birthday:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="41.0" layoutY="412.0" text="Favorite browser:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="newNametxt" layoutX="175.0" layoutY="99.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="newPasswordtxt" layoutX="176.0" layoutY="136.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </PasswordField>
+      <TextField fx:id="photoRoute" editable="false" layoutX="177.0" layoutY="176.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <CheckBox fx:id="softwareCheck" layoutX="175.0" layoutY="264.0" mnemonicParsing="false" text="Software Engineering">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="telematicCheck" layoutX="175.0" layoutY="298.0" mnemonicParsing="false" text="Telematic Engineering">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="industrialCheck" layoutX="176.0" layoutY="329.0" mnemonicParsing="false" text="Industrial Engineering">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <DatePicker fx:id="birthdaytxt" layoutX="176.0" layoutY="368.0" />
+      <ChoiceBox fx:id="browserOptions" layoutX="178.0" layoutY="410.0" prefWidth="150.0" value="" />
+      <Button layoutX="154.0" layoutY="466.0" mnemonicParsing="false" onAction="#loadLogin" text="Sign in">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="273.0" layoutY="466.0" mnemonicParsing="false" onAction="#registerUser" text="Create account">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="370.0" layoutY="176.0" mnemonicParsing="false" onAction="#browsePhotos" text="Browse">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <RadioButton layoutX="176.0" layoutY="223.0" mnemonicParsing="false" text="Male">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="genderGroup" />
+         </toggleGroup></RadioButton>
+      <RadioButton layoutX="248.0" layoutY="223.0" mnemonicParsing="false" text="Female" toggleGroup="$genderGroup">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton layoutX="327.0" layoutY="221.0" mnemonicParsing="false" selected="true" text="Other" toggleGroup="$genderGroup">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+   </children>
+</AnchorPane>

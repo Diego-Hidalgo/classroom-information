@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="395.0" prefWidth="635.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="userName" layoutX="250.0" layoutY="30.0" text="USERNAME TEST">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="profilePhoto" fitHeight="44.0" fitWidth="41.0" layoutX="379.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="436.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" text="Log out">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="187.0" layoutY="69.0" text="User account list">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <TableView fx:id="contentList" layoutX="15.0" layoutY="113.0">
+        <columns>
+          <TableColumn fx:id="userNameColumn" prefWidth="107.0" text="Username" />
+          <TableColumn fx:id="genderColumn" prefWidth="78.0" text="Gender" />
+            <TableColumn fx:id="careerColumn" prefWidth="240.0" text="Career" />
+            <TableColumn fx:id="birthdayColumn" prefWidth="88.0" text="Birthday" />
+            <TableColumn fx:id="browserColumn" prefWidth="91.0" text="Browser" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
